@@ -1,27 +1,79 @@
 import React from "react";
-import { Button } from "@material-ui/core";
-import "../style.css";
+import { Bell } from "react-feather";
+//import "../style.css";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+    AppBar,
+    Toolbar,
+    Typography,
+    SvgIcon,
+    Button,
+    Avatar,
+} from "@material-ui/core";
 
-function header() {
+const useStyles = makeStyles({
+    appBar: {
+        boxShadow: "none",
+    },
+    img: {
+        maxHeight: 55,
+    },
+    title: {
+        color: "green",
+        fontWeight: 300,
+        fontFamily: "Ranchers",
+    },
+    button: {
+        marginRight: 10,
+    },
+    grow: {
+        flexGrow: 1,
+    },
+    userSection: {
+        display: "flex",
+        alignItems: "center",
+    },
+    bell: {
+        marginRight: 10,
+    },
+});
+
+function Header() {
+    const classes = useStyles();
+
     return (
-        <div>
-            <header className="header">
-                <div className="toobar">
-                    <div>
+        <AppBar position="fixed" color="inheret" className={classes.appBar}>
+            <Toolbar>
+                <Typography variant="h4" className={classes.title}>
+                    PixApp
+                </Typography>
+                <img
+                    src="/images/logo.png"
+                    alt="logo"
+                    className={classes.img}
+                />
+                <div className={classes.grow}></div>
+                <div className={classes.userSection}>
+                    <Button variant="contained" className={classes.button}>
+                        Novo Post
+                    </Button>
+                    <SvgIcon className={classes.bell}>
+                        <Bell></Bell>
+                    </SvgIcon>
+                    <Avatar alt="Remy Sharp" src="/images/logo.png" />
+                </div>
+                {/*<div>
                         <a href="/">Pix App</a>
                         <input type="text"></input>
                     </div>
                     <div>
-                        <Button variant="contained" color="primary">
-                            Novo Post
-                        </Button>
+                        
                         <span>img1</span>
                         <span>img2</span>
-                    </div>
-                </div>
-            </header>
-        </div>
+                    </div>*/}
+            </Toolbar>
+        </AppBar>
     );
 }
 
-export default header;
+export default Header;
