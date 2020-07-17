@@ -19,7 +19,7 @@ function Home() {
             </header>
             <div className="toobar"></div>
             <main className="main">
-                <div className="navbar">NavBar</div>
+                <div className="navbar">Barra</div>
                 <div className="feed">Feed</div>
             </main>
         </div>
