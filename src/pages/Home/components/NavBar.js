@@ -12,6 +12,8 @@ const useStyles = makeStyles((theme) => ({
     root: {
         padding: theme.spacing(2),
         width: 275,
+        borderRadius: 15,
+        marginRight: theme.spacing(2),
     },
     button: {
         width: "100%",
@@ -37,7 +39,8 @@ function NavBar() {
                 style={{
                     background: "#008000",
                     color: "#fff",
-                    borderRadius: 10,
+                    borderRadius: 6,
+                    border: 1,
                 }}
             >
                 Registrar

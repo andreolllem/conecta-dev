@@ -60,7 +60,7 @@ function Header() {
                             background: "green",
                             color: "#fff",
                             marginRight: 10,
-                            borderRadius: 10,
+                            borderRadius: 6,
                         }}
                     >
                         Novo Post

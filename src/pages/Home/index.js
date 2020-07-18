@@ -3,7 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 //import "./style.css";
 import Header from "./components/Header";
 import Feed from "./components/Feed";
-import { Container, Box } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
+import Box from "@material-ui/core/Box";
 import NavBar from "./components/NavBar";
 
 const useStyles = makeStyles({
