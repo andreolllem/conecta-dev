@@ -54,7 +54,15 @@ function Header() {
                 />
                 <div className={classes.grow}></div>
                 <div className={classes.userSection}>
-                    <Button variant="contained" className={classes.button}>
+                    <Button
+                        variant="contained"
+                        style={{
+                            background: "green",
+                            color: "#fff",
+                            marginRight: 10,
+                            borderRadius: 10,
+                        }}
+                    >
                         Novo Post
                     </Button>
                     <SvgIcon className={classes.bell}>

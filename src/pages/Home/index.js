@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 //import "./style.css";
 import Header from "./components/Header";
 import Feed from "./components/Feed";
+import { Container, Box } from "@material-ui/core";
 import NavBar from "./components/NavBar";
 
 const useStyles = makeStyles({
@@ -12,9 +13,10 @@ const useStyles = makeStyles({
     },
     main: {
         height: "100vh",
-        display: "flex",
-        width: "1200px",
-        margin: "0 auto",
+        padding: 24,
+    },
+    toobar: {
+        minHeight: 64,
     },
 });
 
@@ -23,10 +25,14 @@ function Home() {
     return (
         <div classes={classes.root}>
             <Header />
-            <div className="toobar"></div>
+            <div className={classes.toobar}></div>
             <main className={classes.main}>
-                <NavBar />
-                <Feed />
+                <Container maxWidth="lg">
+                    <Box display="flex">
+                        <NavBar />
+                        <Feed />
+                    </Box>
+                </Container>
             </main>
         </div>
     );
