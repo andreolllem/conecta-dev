@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -8,8 +8,10 @@ import LockIcon from "@material-ui/icons/Lock";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import LinK from "@material-ui/core/LinK";
+import FormHelperText from "@material-ui/core/FormHelperText";
+
 import { useNavigate } from "react-router-dom";
-import axios from "../../utils/axios";
+import authService from "../../services/authService";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -48,11 +50,17 @@ function Copyright() {
 function SignIn() {
     const classes = useStyles();
     const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState();
 
-    function handleSignin() {
-        axios
-            .post("/api/home/login")
-            .then((resposnse) => console.log(resposnse));
+    async function handleSignin() {
+        try {
+            await authService.signIn(email, password);
+            navigate("/");
+        } catch (error) {
+            setErrorMessage(error.response.data.message);
+        }
     }
 
     return (
@@ -122,6 +130,8 @@ function SignIn() {
                             label="E-mail"
                             autoComplete="email"
                             autoFocus
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
                         />
                         <TextField
                             variant="outlined"
@@ -133,6 +143,10 @@ function SignIn() {
                             id="password"
                             type="password"
                             autoComplete="email"
+                            value={password}
+                            onChange={(event) =>
+                                setPassword(event.target.value)
+                            }
                         />
                         <Button
                             onClick={handleSignin}
@@ -148,6 +162,11 @@ function SignIn() {
                         >
                             Registrar
                         </Button>
+                        {errorMessage && (
+                            <FormHelperText error>
+                                {errorMessage}
+                            </FormHelperText>
+                        )}
                         <Grid container>
                             <Grid item>
                                 <LinK>Esqueceu sua senha?</LinK>
