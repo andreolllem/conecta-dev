@@ -10,6 +10,7 @@ import {
     Button,
     Avatar,
 } from "@material-ui/core";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles({
     appBar: {
@@ -40,6 +41,7 @@ const useStyles = makeStyles({
 
 function Header() {
     const classes = useStyles();
+    const user = useSelector((state) => state.user);
 
     return (
         <AppBar position="fixed" color="inheret" className={classes.appBar}>
@@ -68,7 +70,7 @@ function Header() {
                     <SvgIcon className={classes.bell}>
                         <Bell></Bell>
                     </SvgIcon>
-                    <Avatar alt="Remy Sharp" src="/images/logo.png" />
+                    <Avatar alt="Remy Sharp" src={user && user.avatar} />
                 </div>
             </Toolbar>
         </AppBar>

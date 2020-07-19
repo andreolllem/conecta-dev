@@ -10,7 +10,7 @@ class AuthService {
                 })
                 .then((response) => {
                     if (response.data.user) {
-                        this.setUser(response.data.user);
+                        // this.setUser(response.data.user);
                         resolve(response.data.user);
                     } else {
                         reject(response.data.error);
@@ -28,6 +28,9 @@ class AuthService {
 
     getUser = () => {
         const user = localStorage.getItem("user");
+        if (user) {
+            return JSON.parse(user);
+        }
         return user;
     };
 

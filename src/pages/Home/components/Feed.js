@@ -10,6 +10,19 @@ const posts = [
     {
         id: 1,
         author: {
+            name: "André Mello",
+            username: "andreollem",
+            avatar: "/images/avatars/andre.png",
+        },
+        title: "Billy posando pra SexDog! ",
+        date: "Julho 18, 2020",
+        description: "Muito animada com essa nova Rede Social!",
+        hashtags: "#cinema, #tatto ",
+        image: "/images/posts/billy.jpeg",
+    },
+    {
+        id: 1,
+        author: {
             name: "Carrolina Minni",
             username: "carolinaminni",
             avatar: "/images/avatars/caro.png",
