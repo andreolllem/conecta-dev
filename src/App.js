@@ -1,9 +1,12 @@
 import React from "react";
-import Home from "./pages/Home";
 import { ThemeProvider } from "@material-ui/core/styles";
-import theme from "./theme/index";
-import SignIn from "./pages/Signin/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import GuestRoute from "./routes/GuestRoute";
+import SignIn from "./pages/Signin/index";
+import Home from "./pages/Home";
+import theme from "./theme/index";
+
 import "./mock";
 
 function App() {
@@ -12,7 +15,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/sign-in" element={<SignIn />} />
+                    <GuestRoute path="/sign-in" element={<SignIn />} />
                     <Route path="*" element={<h1>Not Found 404!</h1>} />
                 </Routes>
             </BrowserRouter>
