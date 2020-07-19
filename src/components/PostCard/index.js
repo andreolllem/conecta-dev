@@ -9,6 +9,7 @@ import Avatar from "@material-ui/core/Avatar";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import ChatIcon from "@material-ui/icons/Chat";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -111,7 +112,9 @@ function PostCard({ post }) {
                     <IconButton
                         area-label="favorite"
                         className={classes.favorite}
-                    ></IconButton>
+                    >
+                        <ChatIcon />
+                    </IconButton>
                 </CardActions>
             </Card>
         </div>

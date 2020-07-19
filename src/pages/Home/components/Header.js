@@ -45,7 +45,7 @@ function Header() {
         <AppBar position="fixed" color="inheret" className={classes.appBar}>
             <Toolbar>
                 <Typography variant="h4" className={classes.title}>
-                    PixApp
+                    MeMi App
                 </Typography>
                 <img
                     src="/images/logo.png"
@@ -70,15 +70,6 @@ function Header() {
                     </SvgIcon>
                     <Avatar alt="Remy Sharp" src="/images/logo.png" />
                 </div>
-                {/*<div>
-                        <a href="/">Pix App</a>
-                        <input type="text"></input>
-                    </div>
-                    <div>
-                        
-                        <span>img1</span>
-                        <span>img2</span>
-                    </div>*/}
             </Toolbar>
         </AppBar>
     );

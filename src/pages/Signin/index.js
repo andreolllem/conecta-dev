@@ -1,68 +1,166 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Avatar from "@material-ui/core/Avatar";
+import LockIcon from "@material-ui/icons/Lock";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import LinK from "@material-ui/core/LinK";
+import { useNavigate } from "react-router-dom";
+import axios from "../../utils/axios";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: "flex",
-        flexDirection: "row",
         height: "100vh",
     },
-
-    left: {
-        background: "blue",
-        flexBasis: "58%",
-
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-
-    right: {
-        background: "yellow",
-        flexBasis: "42%",
+    image: {
+        backgroundImage: "url(/images/campo.jpg)",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "none",
+        padding: theme.spacing(2),
+        textAlign: "center",
     },
     form: {
-        display: "flex",
-        flexDirection: "column",
-        margin: "64px 32px",
-        alignItems: "center",
+        margin: theme.spacing(2, 4),
+    },
+    logo: {
+        width: 160,
+        height: 180,
     },
 }));
 
+function Copyright() {
+    return (
+        <Typography variant="body2" align="center">
+            {"Copiright"}
+            <a color="ïnherit" href="http://localhost:3000/home">
+                André Mello
+            </a>
+            {"  "}
+            {new Date().getFullYear()}
+        </Typography>
+    );
+}
+
 function SignIn() {
     const classes = useStyles();
+    const navigate = useNavigate();
+
+    function handleSignin() {
+        axios
+            .post("/api/home/login")
+            .then((resposnse) => console.log(resposnse));
+    }
 
     return (
-        <div className={classes.root}>
-            <div className={classes.left}>
+        <Grid container className={classes.root}>
+            <Grid
+                item
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
+                md={7}
+                className={classes.image}
+            >
+                <Grid>
+                    <img
+                        src="/images/logo.png"
+                        alt="Logo"
+                        className={classes.logo}
+                    ></img>
+                </Grid>
                 <Typography
-                    style={{ color: "#fff", fontSize: 35, lineHeight: "45px" }}
+                    style={{
+                        color: "#fff",
+                        fontSize: 35,
+                        lineHeight: "45px",
+                        fontFamily: "Ranchers",
+                    }}
                 >
-                    <strong>Rede Social Familiar</strong>
+                    <strong>MeMi App</strong>
                 </Typography>
                 <Typography
                     variant="body2"
                     style={{
-                        color: "reg(255, 255, 255, 0.7)",
-                        marginTop: 30,
-                        fontSize: 15,
+                        color: "#FFF",
+                        marginTop: 5,
+                        fontSize: 20,
                         lineHeight: "30px",
                     }}
                 >
-                    Compartilhando...
+                    Social Family
                 </Typography>
-            </div>
-
-            <div className={classes.right}>
-                <form className={classes.form}>
-                    <h4>Acessar</h4>
-                    <input type="text" />
-                    <input type="text" />
-                </form>
-            </div>
-        </div>
+            </Grid>
+            <Grid item md={5}>
+                <Box
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="center"
+                    mt={8}
+                >
+                    <Avatar
+                        style={{
+                            background: "#ccc",
+                            color: "#00695f",
+                            marginBottom: "10px",
+                        }}
+                    >
+                        <LockIcon />
+                    </Avatar>
+                    <Typography variant="h5">Acessar</Typography>
+                    <form className={classes.form}>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="E-mail"
+                            autoComplete="email"
+                            autoFocus
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Senha"
+                            id="password"
+                            type="password"
+                            autoComplete="email"
+                        />
+                        <Button
+                            onClick={handleSignin}
+                            fullWidth
+                            variant="contained"
+                            style={{
+                                background: "#008000",
+                                color: "#fff",
+                                borderRadius: 6,
+                                border: 1,
+                                marginTop: 15,
+                            }}
+                        >
+                            Registrar
+                        </Button>
+                        <Grid container>
+                            <Grid item>
+                                <LinK>Esqueceu sua senha?</LinK>
+                            </Grid>
+                            <Grid item>
+                                <LinK>Não tem uma conta? Registre-se!</LinK>
+                            </Grid>
+                        </Grid>
+                    </form>
+                    <Copyright />
+                </Box>
+            </Grid>
+        </Grid>
     );
 }
 
